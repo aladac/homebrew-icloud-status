@@ -5,7 +5,7 @@ Custom Homebrew formulas.
 ## Installation
 
 ```bash
-brew tap aladac/tap
+brew tap saiden-dev/tap
 ```
 
 ## Formulas
@@ -15,12 +15,12 @@ brew tap aladac/tap
 macOS CLI tool to display comprehensive iCloud status information.
 
 ```bash
-brew install aladac/tap/icloud-status
+brew install saiden-dev/tap/icloud-status
 ```
 
 Or:
 
 ```bash
-brew tap aladac/tap
+brew tap saiden-dev/tap
 brew install icloud-status
 ```
