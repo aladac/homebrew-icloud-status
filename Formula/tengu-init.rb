@@ -1,13 +1,13 @@
 class TenguInit < Formula
   desc "Provision Tengu PaaS on Hetzner Cloud"
   homepage "https://github.com/saiden-dev/tengu-init"
-  version "0.1.1"
+  version "0.1.5"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/saiden-dev/tengu-init/releases/download/v0.1.1/tengu-init-apple-silicon"
-      sha256 "cc87dde054bb2813dcf6f94066461a2a2f17ec62f6756cc579dfdb87ecad0b09"
+      url "https://github.com/saiden-dev/tengu-init/releases/download/v0.1.5/tengu-init-apple-silicon"
+      sha256 "d5942d6dbc8f22dfdfe511c0588e2c15413241ce94bcee8188b14524c8e908a0"
     end
   end
 
