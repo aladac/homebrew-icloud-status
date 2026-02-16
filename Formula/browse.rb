@@ -12,9 +12,11 @@ class Browse < Formula
     bin.install_symlink Dir["#{libexec}/bin/*"]
   end
 
-  def post_install
-    # Install Playwright WebKit browser
-    system "npx", "--prefix", libexec, "playwright", "install", "webkit"
+  def caveats
+    <<~EOS
+      To complete installation, run:
+        npx playwright install webkit
+    EOS
   end
 
   test do
