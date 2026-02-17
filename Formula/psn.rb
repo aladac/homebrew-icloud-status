@@ -8,21 +8,22 @@ class Psn < Formula
 
   depends_on "python@3.14"
 
-  # Skip relinking - cryptography's Rust binary has insufficient header space
-  skip_clean "libexec"
-
   def install
+    # Use pipx-style isolation to avoid Homebrew relinking issues
+    ENV["PYTHONDONTWRITEBYTECODE"] = "1"
+    ENV["PIP_DISABLE_PIP_VERSION_CHECK"] = "1"
+
     python = Formula["python@3.14"].opt_bin/"python3.14"
-    venv = libexec
+    venv = prefix/"venv"
 
-    # Create venv with pip
     system python, "-m", "venv", venv
+    system venv/"bin/pip", "install", "--no-cache-dir", "."
 
-    # Install package and dependencies
-    system venv/"bin/pip", "install", ".", "--no-cache-dir"
-
-    # Link binary
-    bin.install_symlink venv/"bin/psn"
+    # Create wrapper script instead of symlink
+    (bin/"psn").write <<~EOS
+      #!/bin/bash
+      exec "#{venv}/bin/psn" "$@"
+    EOS
   end
 
   test do
