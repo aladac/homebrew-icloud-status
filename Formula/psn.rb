@@ -1,6 +1,4 @@
 class Psn < Formula
-  include Language::Python::Virtualenv
-
   desc "Persona system for Claude Code - MCP server, memory, TTS, cartridges"
   homepage "https://github.com/aladac/psn"
   url "https://github.com/aladac/psn.git", branch: "master"
@@ -11,11 +9,17 @@ class Psn < Formula
   depends_on "python@3.14"
 
   def install
-    virtualenv_create(libexec, "python3.14")
-    system libexec/"bin/pip", "install", "--no-deps", "."
-    system libexec/"bin/pip", "install", "mcp>=1.0.0", "piper-tts>=1.4.0",
-           "typer>=0.12.0", "rich>=13.0.0", "pydantic>=2.0.0", "pyyaml>=6.0.0"
-    bin.install_symlink libexec/"bin/psn"
+    python = Formula["python@3.14"].opt_bin/"python3.14"
+    venv = libexec
+
+    # Create venv with pip
+    system python, "-m", "venv", venv
+
+    # Install package and dependencies
+    system venv/"bin/pip", "install", "."
+
+    # Link binary
+    bin.install_symlink venv/"bin/psn"
   end
 
   test do
