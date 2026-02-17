@@ -8,18 +8,18 @@ class Psn < Formula
 
   depends_on "python@3.14"
 
+  # Disable relinking - cryptography Rust binary has insufficient mach-o header space
+  pour_bottle? only_if: :clt_installed
+
   def install
-    # Use pipx-style isolation to avoid Homebrew relinking issues
-    ENV["PYTHONDONTWRITEBYTECODE"] = "1"
-    ENV["PIP_DISABLE_PIP_VERSION_CHECK"] = "1"
-
     python = Formula["python@3.14"].opt_bin/"python3.14"
-    venv = prefix/"venv"
 
+    # Install into share to avoid Homebrew's library relinking
+    venv = share/"venv"
     system python, "-m", "venv", venv
     system venv/"bin/pip", "install", "--no-cache-dir", "."
 
-    # Create wrapper script instead of symlink
+    # Create wrapper script
     (bin/"psn").write <<~EOS
       #!/bin/bash
       exec "#{venv}/bin/psn" "$@"
