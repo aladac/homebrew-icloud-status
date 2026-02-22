@@ -25,3 +25,5 @@ macOS CLI tool to display comprehensive iCloud status information.
 ```bash
 brew install saiden-dev/tap/icloud-status
 ```
+
+<!-- Last verified: 2026-02-22 -->
