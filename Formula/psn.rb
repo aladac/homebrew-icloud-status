@@ -12,7 +12,7 @@ class Psn < Formula
   def install
     python = Formula["python@3.14"].opt_bin/"python3.14"
 
-    system "/opt/homebrew/bin/uv", "tool", "install", "."
+    system "/opt/homebrew/opt/python@3.14/libexec/bin/pip", "install", "-e", ".", "--break-system-packages", "-q"
 
     (bin/"psn").write <<~EOS
       #!/bin/bash
