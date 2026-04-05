@@ -1,17 +1,20 @@
 class IcloudStatus < Formula
   desc "macOS CLI tool to display comprehensive iCloud status information"
   homepage "https://github.com/saiden-dev/icloud-status"
-  url "https://github.com/saiden-dev/icloud-status/archive/refs/tags/v0.1.2.tar.gz"
-  sha256 "686e13d64f606c022056011c2db223d333d1ddfdad29b9b091094026a4639c70"
+  version "0.1.2"
   license "MIT"
-  head "https://github.com/saiden-dev/icloud-status.git", branch: "master"
 
-  depends_on xcode: ["14.0", :build]
   depends_on :macos
 
+  on_macos do
+    on_arm do
+      url "https://github.com/saiden-dev/icloud-status/releases/download/v#{version}/icloud-status-v#{version}-macos.tar.gz"
+      sha256 "19b1bd0c8f2f5ecbecb948c7292e46d0abf70549f5ece040a950787429e0dc1a"
+    end
+  end
+
   def install
-    system "swift", "build", "-c", "release", "--disable-sandbox"
-    bin.install ".build/release/icloud-status"
+    bin.install "icloud-status"
   end
 
   test do
