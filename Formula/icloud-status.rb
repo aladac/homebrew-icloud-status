@@ -1,16 +1,14 @@
 class IcloudStatus < Formula
   desc "macOS CLI tool to display comprehensive iCloud status information"
   homepage "https://github.com/saiden-dev/icloud-status"
-  version "0.1.2"
+  version "0.1.3"
   license "MIT"
 
   depends_on :macos
 
   on_macos do
-    on_arm do
-      url "https://github.com/saiden-dev/icloud-status/releases/download/v#{version}/icloud-status-v#{version}-macos.tar.gz"
-      sha256 "19b1bd0c8f2f5ecbecb948c7292e46d0abf70549f5ece040a950787429e0dc1a"
-    end
+    url "https://github.com/saiden-dev/icloud-status/releases/download/v#{version}/icloud-status-v#{version}-macos.tar.gz"
+    sha256 "5ff5b8b65d993a57c454c47f63066f96269163537fdc0475f2d099a142f842f6"
   end
 
   def install
