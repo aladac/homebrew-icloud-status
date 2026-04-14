@@ -1,8 +1,8 @@
 class Browse < Formula
   desc "Headless browser automation for Claude Code using Playwright WebKit"
   homepage "https://github.com/saiden-dev/browse"
-  url "https://registry.npmjs.org/@saiden/browse/-/browse-0.3.3.tgz"
-  sha256 "94ad00a7148604cd043b5a41663dbbdca11a9c1e8b1995085e4fc48e8e4f1d34"
+  url "https://registry.npmjs.org/@saiden/browse/-/browse-0.4.0.tgz"
+  sha256 "0df70370e76d7aec3bc253f907539dcdaf49800229ae958efc682a471e000785"
   license "MIT"
 
   depends_on "node"
